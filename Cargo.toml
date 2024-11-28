@@ -1,6 +1,6 @@
 [package]
 name = "haveibeenpwned-downloader"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 authors = ["Alisa Gorelova <nanopro1g@gmail.com>"]
 readme = "README.md"
@@ -15,8 +15,8 @@ license = "MIT"
 futures-util = "0.3.30"
 futures = "0.3.30"
 reqwest = { version = "0.12", features = ["http2", "rustls-tls-webpki-roots", "macos-system-configuration"], default-features = false}
-tower = { version = "0.4.13", features = ["retry"] }
-tokio = { version = "1.38.0", features = ["sync", "rt-multi-thread", "fs", "macros"] }
+tower = { version = "0.4.13", features = ["retry", "util"] }
+tokio = { version = "1.41.1", features = ["sync", "rt-multi-thread", "fs", "macros", "io-std"] }
 clap = { version = "4.5.8", features = ["derive"] }
 tracing = "0.1.40"
 tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
