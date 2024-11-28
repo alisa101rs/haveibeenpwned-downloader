@@ -64,7 +64,7 @@ async fn main() -> stable_eyre::Result<()> {
             if let Some(it) = progress.as_ref() {
                 it.inc(1)
             }
-            tx.send(result?).await.unwrap();
+            tx.send(result).await.unwrap();
         }
         if let Some(it) = progress.as_ref() {
             it.finish()
@@ -79,7 +79,8 @@ async fn main() -> stable_eyre::Result<()> {
             break;
         }
 
-        for (prefix, piece) in recv_buffer.drain(..) {
+        for result in recv_buffer.drain(..) {
+            let (prefix, piece) = result?;
             output.write(prefix, piece).await?;
         }
     }
